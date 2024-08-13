@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35201.85
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AstrophotoCalculator", "AstrophotoCalculator\AstrophotoCalculator.csproj", "{EEBABC09-FE9B-45FE-9DC5-4A4FC63356D8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EEBABC09-FE9B-45FE-9DC5-4A4FC63356D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEBABC09-FE9B-45FE-9DC5-4A4FC63356D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEBABC09-FE9B-45FE-9DC5-4A4FC63356D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEBABC09-FE9B-45FE-9DC5-4A4FC63356D8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F2F5E66F-0A80-484E-A7A7-23398AF99A98}
+	EndGlobalSection
+EndGlobal

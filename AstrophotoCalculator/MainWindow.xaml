@@ -1,0 +1,458 @@
+﻿<Window
+    x:Class="AstrophotoCalculator.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:AstrophotoCalculator"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontSize="14"
+    Loaded="Window_Loaded"
+    ResizeMode="CanMinimize"
+    SizeToContent="WidthAndHeight"
+    Title="天文摄影计算器">
+    <Grid>
+        <TabControl SelectionChanged="TabControl_SelectionChanged">
+            <TabItem Background="#FFF0F0F0" Header="镜头">
+                <Grid Background="#FFFAFAFA">
+                    <Label
+                        Width="72"
+                        Height="30"
+                        Margin="12,12,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        Content="镜头焦距" />
+                    <Label
+                        Width="72"
+                        Height="30"
+                        Margin="12,60,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        Content="光圈焦比" />
+                    <Label
+                        Width="72"
+                        Height="30"
+                        Margin="12,108,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        Content="入瞳直径" />
+                    <Label
+                        Width="72"
+                        Height="30"
+                        Margin="12,156,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        Content="光的波长" />
+                    <Label
+                        Width="72"
+                        Height="30"
+                        Margin="12,204,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        Content="瑞利极限" />
+                    <TextBox
+                        x:Name="焦距框"
+                        Width="144"
+                        Height="24"
+                        Margin="100,15,24,0"
+                        VerticalAlignment="Top"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        LostFocus="焦距框_LostFocus"
+                        MaxLength="6"
+                        TextChanged="焦距框_TextChanged"
+                        ToolTip="单位：毫米" />
+                    <TextBox
+                        x:Name="焦比框"
+                        Width="144"
+                        Height="24"
+                        Margin="100,63,24,0"
+                        VerticalAlignment="Top"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        LostFocus="焦比框_LostFocus"
+                        MaxLength="6"
+                        TextChanged="焦比框_TextChanged" />
+                    <TextBox
+                        x:Name="入瞳框"
+                        Width="144"
+                        Height="24"
+                        Margin="100,111,24,0"
+                        VerticalAlignment="Top"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        LostFocus="入瞳框_LostFocus"
+                        MaxLength="6"
+                        TextChanged="入瞳框_TextChanged"
+                        ToolTip="单位：毫米" />
+                    <TextBox
+                        x:Name="波下框"
+                        Width="64"
+                        Height="24"
+                        Margin="100,159,104,0"
+                        VerticalAlignment="Top"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        MaxLength="6"
+                        Text="400"
+                        TextChanged="波下框_TextChanged"
+                        ToolTip="单位：纳米" />
+                    <TextBox
+                        x:Name="波上框"
+                        Width="64"
+                        Height="24"
+                        Margin="180,159,24,0"
+                        VerticalAlignment="Top"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        MaxLength="6"
+                        Text="700"
+                        TextChanged="波上框_TextChanged"
+                        ToolTip="单位：纳米" />
+                    <TextBox
+                        x:Name="衍下框"
+                        Width="64"
+                        Height="24"
+                        Margin="100,207,104,20"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        IsReadOnly="True"
+                        ToolTip="单位：角秒" />
+                    <TextBox
+                        x:Name="衍上框"
+                        Width="64"
+                        Height="24"
+                        Margin="180,207,24,20"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        IsReadOnly="True"
+                        ToolTip="单位：角秒" />
+                </Grid>
+            </TabItem>
+            <TabItem Background="#FFF0F0F0" Header="相机">
+                <Grid Background="#FFFAFAFA">
+                    <Label
+                        Width="72"
+                        Height="30"
+                        Margin="12,12,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        Content="感光元件" />
+                    <Label
+                        Width="72"
+                        Height="30"
+                        Margin="12,60,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        Content="宽高尺寸" />
+                    <Label
+                        Width="72"
+                        Height="30"
+                        Margin="12,108,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        Content="总像素数" />
+                    <Label
+                        Width="72"
+                        Height="30"
+                        Margin="12,156,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        Content="像素尺寸" />
+                    <Label
+                        Width="72"
+                        Height="30"
+                        Margin="12,204,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        Content="视场角度" />
+                    <ComboBox
+                        x:Name="底片选"
+                        Width="144"
+                        Height="24"
+                        Margin="100,15,24,0"
+                        VerticalAlignment="Top"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        SelectionChanged="底片选_SelectionChanged">
+                        <ComboBoxItem Content="IMX071" />
+                        <ComboBoxItem Content="IMX410" />
+                        <ComboBoxItem Content="IMX455" />
+                        <ComboBoxItem Content="IMX461" />
+                        <ComboBoxItem Content="IMX533" />
+                        <ComboBoxItem Content="IMX571" />
+                    </ComboBox>
+                    <TextBox
+                        x:Name="底宽框"
+                        Width="64"
+                        Height="24"
+                        Margin="100,63,104,0"
+                        VerticalAlignment="Top"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        MaxLength="6"
+                        TextChanged="底宽框_TextChanged"
+                        ToolTip="单位：毫米" />
+                    <TextBox
+                        x:Name="底高框"
+                        Width="64"
+                        Height="24"
+                        Margin="180,63,24,0"
+                        VerticalAlignment="Top"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        MaxLength="6"
+                        TextChanged="底高框_TextChanged"
+                        ToolTip="单位：毫米" />
+                    <TextBox
+                        x:Name="宽数框"
+                        Width="64"
+                        Height="24"
+                        Margin="100,111,104,0"
+                        VerticalAlignment="Top"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        MaxLength="6"
+                        TextChanged="宽数框_TextChanged" />
+                    <TextBox
+                        x:Name="高数框"
+                        Width="64"
+                        Height="24"
+                        Margin="180,111,24,0"
+                        VerticalAlignment="Top"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        MaxLength="6"
+                        TextChanged="高数框_TextChanged" />
+                    <TextBox
+                        x:Name="单尺框"
+                        Width="144"
+                        Height="24"
+                        Margin="100,159,24,0"
+                        VerticalAlignment="Top"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        MaxLength="6"
+                        TextChanged="单尺框_TextChanged"
+                        ToolTip="单位：微米" />
+                    <TextBox
+                        x:Name="场宽框"
+                        Width="64"
+                        Height="24"
+                        Margin="100,207,104,20"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        IsReadOnly="True" />
+                    <TextBox
+                        x:Name="场高框"
+                        Width="64"
+                        Height="24"
+                        Margin="180,207,24,20"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        IsReadOnly="True" />
+                </Grid>
+            </TabItem>
+            <TabItem Background="#FFF0F0F0" Header="曝光">
+                <Grid Background="#FFFAFAFA">
+                    <Label
+                        Width="72"
+                        Height="30"
+                        Margin="12,12,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        Content="角分辨率" />
+                    <Label
+                        Width="72"
+                        Height="30"
+                        Margin="12,60,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        Content="目标赤纬" />
+                    <Label
+                        Width="72"
+                        Height="30"
+                        Margin="12,108,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        Content="拖线程度" />
+                    <Label
+                        Width="72"
+                        Height="30"
+                        Margin="12,156,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        Content="曝光时间" />
+                    <Label
+                        Width="72"
+                        Height="30"
+                        Margin="12,204,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        Content="效率指数" />
+                    <TextBox
+                        x:Name="辨一框"
+                        Width="144"
+                        Height="24"
+                        Margin="100,15,24,0"
+                        VerticalAlignment="Top"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        MaxLength="6"
+                        TextChanged="辨一框_TextChanged"
+                        ToolTip="单位：角秒，指一个像素对应的视场角" />
+                    <TextBox
+                        x:Name="赤纬框"
+                        Width="144"
+                        Height="24"
+                        Margin="100,63,24,0"
+                        VerticalAlignment="Top"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        MaxLength="6"
+                        TextChanged="赤纬框_TextChanged"
+                        ToolTip="单位：度" />
+                    <TextBox
+                        x:Name="半宽框"
+                        Width="144"
+                        Height="24"
+                        Margin="100,111,24,0"
+                        VerticalAlignment="Top"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        LostFocus="半宽框_LostFocus"
+                        MaxLength="6"
+                        TextChanged="半宽框_TextChanged"
+                        ToolTip="单位：像素，可以直接填入星点半宽" />
+                    <TextBox
+                        x:Name="快门框"
+                        Width="144"
+                        Height="24"
+                        Margin="100,159,24,0"
+                        VerticalAlignment="Top"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        LostFocus="快门框_LostFocus"
+                        MaxLength="6"
+                        TextChanged="快门框_TextChanged"
+                        ToolTip="单位：秒" />
+                    <TextBox
+                        x:Name="效率框"
+                        Height="24"
+                        Margin="100,207,24,20"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        IsReadOnly="True"
+                        ToolTip="反映每像素获得的能量" />
+                </Grid>
+            </TabItem>
+            <TabItem Background="#FFF0F0F0" Header="大小">
+                <Grid Background="#FFFAFAFA">
+                    <Label
+                        Width="72"
+                        Height="30"
+                        Margin="12,12,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        Content="角分辨率" />
+                    <Label
+                        Width="72"
+                        Height="30"
+                        Margin="12,60,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        Content="目标大小" />
+                    <Label
+                        Width="72"
+                        Height="30"
+                        Margin="12,108,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        Content="占据像素" />
+                    <ComboBox
+                        x:Name="单位选"
+                        Height="24"
+                        Margin="196,63,24,0"
+                        VerticalAlignment="Top"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        SelectedIndex="2"
+                        SelectionChanged="单位选_SelectionChanged">
+                        <ComboBoxItem Content="度" />
+                        <ComboBoxItem Content="分" />
+                        <ComboBoxItem Content="秒" />
+                    </ComboBox>
+                    <TextBox
+                        x:Name="辨二框"
+                        Width="144"
+                        Height="24"
+                        Margin="100,15,24,0"
+                        VerticalAlignment="Top"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        LostFocus="辨二框_LostFocus"
+                        MaxLength="8"
+                        TextChanged="辨二框_TextChanged"
+                        ToolTip="单位：角秒，指一个像素对应的视场角" />
+                    <TextBox
+                        x:Name="靶角框"
+                        Width="80"
+                        Height="24"
+                        Margin="100,63,88,0"
+                        VerticalAlignment="Top"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        LostFocus="靶角框_LostFocus"
+                        MaxLength="6"
+                        TextChanged="靶角框_TextChanged" />
+                    <TextBox
+                        x:Name="占据框"
+                        Width="144"
+                        Height="24"
+                        Margin="100,111,24,20"
+                        VerticalAlignment="Top"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        LostFocus="占据框_LostFocus"
+                        TextChanged="占据框_TextChanged" />
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
